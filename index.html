@@ -1,0 +1,606 @@
+
+<?php
+
+@$reg_no ="";
+@$name = "";
+@$dob = "";
+@$parent_name =""; 
+@$mobile_number="";
+@$gender="";
+@$religion="";
+@$nationality =""; 
+@$email ="";
+
+@$category ="";
+@$caste = "";
+@$pwd = "";
+@$games =""; 
+@$wardOfService="";
+@$NRI="";
+@$andaman =""; 
+@$NccHolder ="";
+@$srilankaRefugee ="";
+
+@$preferreddegree="";
+@$programname="";
+@$natives="";
+
+    
+  @$sslc_status="";
+  @$sslc_school="";
+  @$sslc_Board="";
+  @$sslc_mark="";
+  @$sslc_yop="";
+
+  @$hsc_group="";
+  @$hsc_status="";
+  @$hsc_school="";
+  @$hsc_Board="";
+  @$hsc_mark="";
+  @$hsc_yop="";
+@$sno="";
+
+  @$g_status="";
+  @$g_exampattern="";
+  @$g_college="";
+  @$g_university="";
+  @$g_branch="";
+  @$g_yop="";
+  @$g_mark1="";
+  @$g_mark2="";
+  @$g_mark3="";
+
+   
+      @$reg_no = $_POST['reg'];
+      @$name = $_POST['name'] ;
+      @$dob = $_POST['dob'];
+      @$parent_name = $_POST['parent'];
+      @$mobile_number=$_POST['phno'];
+      @$gender=$_POST['gender'];
+      @$religion=$_POST['religion'];
+      @$nationality = $_POST['nation'];
+      @$email = $_POST['email'];
+   
+      @$category = $_POST['category'];
+      @$caste = $_POST['caste'] ;
+      
+          @$pwd = $_POST['pwd'];
+          @$games = $_POST['games'];
+          @$wardOfService = $_POST['ward'];
+          @$NRI = $_POST['nri'];
+          @$andaman = $_POST['andaman'];
+          @$NccHolder = $_POST['NccHolder'];
+          @$srilankaRefugee = $_POST['srilanka'];
+            @$preferreddegree=$_POST['predegree'];
+            @$programname=$_POST['programname'];
+            @$natives=$_POST['nativeplace'];
+
+
+
+    
+  @$sslc_status=$_POST['sslc_status'];
+  @$sslc_school=$_POST['sslc_school'];
+  @$sslc_Board=$_POST['sslc_board'];
+  @$sslc_mark=$_POST['sslc_mark'];
+  @$sslc_yop=$_POST['sslc_yop'];
+
+  @$hsc_group=$_POST['hsc_group'];
+  @$hsc_status=$_POST['hsc_status'];
+  @$hsc_school=$_POST['hsc_school'];
+  @$hsc_Board=$_POST['hsc_board'];
+  @$hsc_mark=$_POST['hsc_mark'];
+  @$hsc_yop=$_POST['hsc_yop'];
+
+  
+  @$g_status=$_POST["g_status"];
+  @$g_exampattern=$_POST["g_exampattern"];
+  @$g_college=$_POST["g_college"];
+  @$g_university=$_POST["g_university"];
+  @$g_branch=$_POST["g_branch"];
+  @$g_yop=$_POST["g_yop"];
+  @$g_mark1=$_POST["g_mark1"];
+  @$g_mark2=$_POST["g_mark2"];
+  @$g_mark3=$_POST["g_mark3"];
+
+
+    
+
+    // database details
+    $host = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "admission";
+
+    // creating a connection
+    $con = mysqli_connect($host, $username, $password, $dbname);
+
+    // to ensure that the connection is made
+    if (!$con)
+    {
+        die("Connection failed!" . mysqli_connect_error());
+    }
+
+$sno=14;
+$sql1 = "INSERT INTO personaldetail(reg, candidate_name, dob, parent_name,mobile_no,gender,religion,nationality,email,Person_id) VALUES ('$reg_no', '$name', '$dob', '$parent_name','$mobile_number', '$gender', '$religion', '$nationality','$email','$sno')";
+mysqli_query($con,$sql1);
+
+// $sql="SELECT Person_id FROM personaldetail WHERE reg = '$reg_no'";
+// $result = mysqli_query($con,$sql);
+// if (!$result) {
+//    echo 'Could not run query: ' . mysql_error();
+//   exit;
+//   }
+//   $row = mysqli_fetch_row($result);
+
+// $sno=$row[0];
+
+
+    $sql2 = "INSERT INTO communitydetail(community_id,category,caste,pwd,games,wardofservice,NRI,AndamanIsland,NccHolder,srilankaRefugee) VALUES ('$sno','$category', '$caste', '$pwd', '$games','$wardOfService', '$NRI', '$andaman', '$NccHolder','$srilankaRefugee')";
+
+    $sql3 = "INSERT INTO programmedetail(programme_id,preferred_degree,programme_name,nativity) VALUES ('$sno','$preferreddegree',$programname','$natives')";
+
+    $sql4 = "INSERT INTO secondaryschool(sslc_id,sslc_status,sslc_school,sslc_Board,sslc_mark,sslc_yop) VALUES ('$sno','$sslc_status','$sslc_school','$sslc_Board','$sslc_mark','$sslc_yop')";
+  
+    $sql5 = "INSERT INTO highersecondaryschool(hsc_id,hsc_status,hsc_group,hsc_school,hsc_Board,hsc_mark,hsc_yop) VALUES ('$sno','$hsc_status','$hsc_group','$hsc_school','$hsc_Board','$hsc_mark','$hsc_yop')";
+
+    $sql6 = "INSERT INTO graduationdetails(g_id,g_status,g_exampattern,g_college,g_university,g_branch,g_yop,g_mark1,g_mark2,g_mark3) VALUES ('$sno','$g_status','$g_exampattern','$g_college','$g_university','$g_branch','$g_yop','$g_mark1','$g_mark2','$g_mark3')";
+    
+   
+
+mysqli_query($con,$sql2);
+mysqli_query($con,$sql3);
+
+mysqli_query($con,$sql4);
+mysqli_query($con,$sql5);
+mysqli_query($con,$sql6);
+   
+
+
+
+
+
+ 
+
+
+
+   
+
+   
+?>
+
+
+
+
+
+
+<!--  php end  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<!-- CSS only -->
+
+   <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    </style>
+</head>
+<body>
+     <div class="container">
+        <header>ADMISSION FORM</header>
+        <div class="progress-bar">
+         <div class="step">
+            <p>    Personal &nbsp;details</p>
+            <div class="bullet">
+            <span>1</span>
+         </div>
+            <div class=" check fa-solid fa-check"></div>
+
+         </div>
+         <div class="step">
+            <p>Community details</p>
+            <div class="bullet">
+
+            <span>2</span>
+         </div>
+            <div class="check fa-solid fa-check"></div>
+         </div>
+         <div class="step">
+
+            <p>Programme details</p>
+            <div class="bullet">
+
+            <span>3</span>
+         </div>
+            <div class="check fa-solid fa-check"></div>
+
+
+         </div>
+         <div class="step">
+
+            <p>12th details</p>
+            <div class="bullet">
+
+            <span>4</span>
+         </div>
+            <div class="check fa-solid fa-check"></div>
+
+
+         </div>
+         <div class="step">
+            <p>Graduation Details</p>
+            <div class="bullet">
+            <span>5</span>
+         </div>
+            <div class="check fa-solid fa-check"></div>
+         </div>
+        </div>
+
+        
+
+
+        
+        <div class="form-outer">
+            <form action="add.php" method="post">
+                <div class="page slidepage" id="page-width" id="page1">
+                   <div class="title">Personal Details: </div>
+                   <div class="flex">
+                     <div class="field">
+                      <div class="label">Register No <span class="required f1"></span></div>
+                      <input type="text" name="reg">
+                   </div>
+                   <div class="field ml">
+                     <div class="label">Gender <span class="required f2"></span></div>
+                     <select name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Others</option>
+                     </select>
+                     
+                  </div>
+                </div>
+                       <div class="flex">
+                       <div class="field">
+                        <div class="label">Name of the Applicant <span class="required f3"></span></div>
+                        <input type="text" name="name">
+                     </div>
+                       <div class="field ml">
+                        <div class="label">Religion<span class="required f4"></span></div>
+                        <input type="text" name="religion">
+                        </div>
+                  </div>
+                  <div class="flex">
+                     <div class="field">
+                      <div class="label">Date of Birth<span class="required f5"></span></div>
+                      <input type="date" name="dob">
+                   </div>
+                     <div class="field ml">
+                      <div class="label">Nationality<span class="required f6"></span></div>
+                      <input type="text" name="nation">
+                   </div>
+                </div>
+                <div class="flex">
+                  <div class="field">
+                     <div class="label">Father's/Mother's/ Guardian Name<span class="required f7"></span></div>
+                     <input type="text" name="parent" class="parent">
+                     
+                  </div>
+                  <div class="field ml">
+                   <div class="label">Email Id<span class="required f8"></span></div>
+                   <input type="text" name="email">
+                </div>
+                
+             </div>
+             <div class="flex">
+               <div class="field">
+                <div class="label">Mobile number<span class="required f9"></span></div>
+                <input type="text" name="phno">
+             </div>
+              
+          </div>
+             
+   
+                      <div class="field" id="nextbtn">
+                        <button type="button" class="nextBtn">Next</button>
+                      </div>
+
+                </div>
+                <div class="page" id="page-width">
+                    <div class="title">Community/Category Details</div>
+                    <div class="flex">
+                     <div class="field">
+                      <div class="label">Category<span class="required f10"></span></div>
+                      <input type="text" name="category">
+                   </div>
+                     <div class="field ml">
+                      <div class="label">Caste<span class="required f11"></span></div>
+                      <input type="text" name="caste" >
+                   </div>
+                </div>
+                <div class="flex rad">
+                   <div class="field">
+                    <div class="label">Are you PWD(Persons with Disability)</div>
+                    <label for="radio11">Yes 
+                    <input type="radio" id="radio11" name="pwd" value="yes"></label>
+                    <label for="radio12">No
+                    <input type="radio" id="radio12" name="pwd" value="No"></label>
+                 </div>
+                   <div class="field ml">
+                    <div class="label">Represented the University in Games</div>
+                    <label for="radio21">Yes 
+                     <input type="radio" id="radio21" name="games" value="Yes"></label>
+                     <label for="radio22">No
+                     <input type="radio" id="radio22" name="games" value="No"></label>
+
+                 </div>
+              </div>
+              <div class="flex">
+                <div class="field">
+                   <div class="label">Are You a ward of Service/Ex-Serviceman?</div>
+                   <label for="radio31">Yes 
+                     <input type="radio" id="radio31" name="ward" value="Yes"></label>
+                     <label for="radio32">No
+                     <input type="radio" id="radio32" name="ward" value="No"></label>
+                   
+                </div>
+                <div class="field ml">
+                 <div class="label">NRI/Industrial Sponsored</div>
+                 <label for="radio41">Yes 
+                  <input type="radio" id="radio41" name="nri" value="Yes"></label>
+                  <label for="radio42">No
+                  <input type="radio" id="radio42" name="nri" value="No"></label>
+              </div>
+              
+           </div>
+           <div class="flex">
+             <div class="field">
+              <div class="label">Are you Tamil Origin from Andaman and Nicobar Islands?</div>
+              <div class="spacetop">
+              <label for="radio51">Yes 
+               <input type="radio" id="radio51" name="andaman" value="Yes"></label>
+               <label for="radio52">No
+               <input type="radio" id="radio52" name="andaman" value="No"></label>
+            </div>
+           </div>
+           <div class="field ml">
+            <div class="label">Are you NCC Certificate Holder</div>
+            <label for="radio61">Yes 
+               <input type="radio" id="radio61" name="NccHolder" value="Yes"></label>
+               <label for="radio62">No
+               <input type="radio" id="radio62" name="NccHolder" value="No"></label>
+         </div>
+            
+        </div>
+        <div class="flex">
+         <div class="field">
+            <div class="label">Are you from a Sri Lankan Tamil Refugee Camp?</div>
+            <label for="radio71">Yes 
+               <input type="radio" id="radio71" name="srilanka" value="Yes"></label>
+               <label for="radio72">No
+               <input type="radio" id="radio72" name="srilanka" value="No"></label>
+         </div>
+        
+    </div>
+                       <div class="field btns" id="pnb1">
+                        <button  type="button" class="prev-1 prev">Previous</button>
+                         <button  type="button" class="next-1 next">Next</button>
+                       </div>
+ 
+                 </div>
+
+                 <div class="page" id="page-width2">
+                    <div class="title">Programme Details</div>
+                    <div class="flex">
+                     <div class="field">
+                      <div class="label">Preferred Degree Programme<span class="required f12"></span></div>
+                      <input type="text" name="predegree">
+                   </div>
+                     <div class="field ml">
+                      <div class="label">Nativity<span class="required f13"></span></div>
+                      <input type="text" name="nativeplace">
+                      </div>
+                  </div>
+                  <div class="field">
+                     <div class="label">Programme Name<span class="required f14"></span></div>
+                     <input type="text" name="programname">
+                  </div>
+                <div class="">SSLC(10th details)</div>
+                   <div class="field">
+                  <div class="label">Status</span></div>
+               
+                   <select name="sslc_status">
+                     <option value="Ongoing">Ongoing</option>
+                     <option value="Completed">Completed</option>
+                  </select>
+
+                 </div>
+                   
+              
+              <div class="flex">
+                <div class="field">
+                   <div class="label">School<span class="required f15"></span></div>
+                   <input type="text" name="sslc_school">
+                   
+                </div>
+                <div class="field ml">
+                 <div class="label">Board(State/CBSE/ICSC/etc)</div>
+                 <select name="sslc_board">
+                  <option value="State Board">STATE BOARD</option>
+                  <option value="CBSC">CBSC</option>
+                  <option value="ICSC">ICSC</option>
+               </select>
+              </div>
+              
+           </div>
+           <div class="flex">
+             <div class="field">
+              <div class="label">% of Marks/CGPA<span class="required f16"></span></div>
+              <input type="text" name="sslc_mark">
+           </div>
+           <div class="field ml">
+            <div class="label">Month and Year of Passing<span class="required f17"></span></div>
+            <input type="text" name="sslc_yop">
+            </div>
+        </div>
+                  
+                       <div class="field btns" id="pnb1">
+                        <button  type="button" class="prev-2 prev">Previous</button>
+                         <button  type="button" class="next-2 next">Next</button>
+                       </div>
+               </div>
+
+                       
+                 <div class="page" id="page-width">
+                  <div class="title">HSC(12th) Details</div>
+                 
+                  <div class="flex">
+                     <div class="field">
+                        <div class="label">Status</div>
+                     
+                         <select name="hsc_status" >
+                           <option value="Ongoing">Ongoing</option>
+                           <option value="Completed">Completed</option>
+                        </select>
+       
+                       </div>
+                      
+                     <div class="field ml">
+                      <div class="label">Subject/Group studied <span class="required f18"></span></div>
+                      <input type="text" name="hsc_group">
+                   </div>
+                 
+                  </div>
+                 
+                 
+                
+                  
+             
+             <div class="flex">
+               <div class="field">
+                  <div class="label">School <span class="required f19"></span></div>
+                  <input type="text" name="hsc_school">
+                  
+               </div>
+               <div class="field ml">
+                <div class="label">Board(State/CBSE/ICSC/etc)</div>
+                <select name="hsc_board" >
+                 <option value="State Board">STATE BOARD</option>
+                 <option value="CBSC">CBSC</option>
+                 <option value="ICSC">ICSC</option>
+              </select>
+             </div>
+             
+          </div>
+          <div class="flex">
+            <div class="field">
+             <div class="label">% of Marks/CGPA <span class="required f20"></span></div>
+             <input type="text" name="hsc_mark">
+          </div>
+          <div class="field ml">
+           <div class="label">Month and Year of Passing <span class="required f21"></span></div>
+           <input type="text" name="hsc_yop">
+          </div>
+
+
+       </div>
+                       
+      
+                       <div class="field btns" id="pnb1">
+                        <button  type="button" class="prev-3 prev">Previous</button>
+                         <button  type="button" class="next-3 next">Next</button>
+                       </div>
+
+                     </div>
+                   
+                       <div class="page" id="page-width">
+                        <input type="checkbox" name="check" id="check">
+                        <label for="check" class="checkm">Please click this, are you applying for Undergraduation. Because you don't need to fill this.This is only for Post Graduation</label>
+               <div id="page4"> 
+                        <div class="title">Graduation Details</div>
+                       
+                        <div class="flex">
+                           <div class="field">
+                              <div class="label">Status</div>
+                           
+                               <select name="g_status" >
+                                 <option value="Ongoing">Ongoing</option>
+                                 <option value="Completed">Completed</option>
+                              </select>
+             
+                             </div>
+                            
+                           <div class="field lm">
+                            <div class="label">Examination Pattern</div>
+                            <input type="text" name="g_exampattern">
+                         </div>
+                       
+                        </div>
+                       
+                       
+                      
+                        
+                   
+                   <div class="flex">
+                     <div class="field">
+                        <div class="label">College / School Education Board</div>
+                        <input type="text" name="g_college">
+                        
+                     </div>
+                     <div class="field lm">
+                      <div class="label">University / Institution</div>
+                     <input type="text" name="g_university">
+                   </div>
+                   
+                </div>
+                <div class="flex">
+                  <div class="field">
+                   <div class="label">Branch / Subject</div>
+                   <input type="text" name="g_branch">
+                </div>
+                <div class="field lm">
+                 <div class="label">Month and Year of Passing</div>
+                 <input type="text" name="g_yop">
+                 </div>
+    
+
+                 </div>
+                 <div class="flex">
+                  <div class="field">
+                   <div class="label">% of Marks (Part 1)</div>
+                   <input type="text" name="g_mark1">
+                </div>
+                <div class="field lm">
+                 <div class="label">% of Marks (Part 2)</div>
+                 <input type="text" name="g_mark2">
+                 </div>
+                 </div>
+                 <div class="field">
+                  <div class="label">% of Marks (Part 3)</div>
+                  <input type="text" name="g_mark3">
+               </div>
+            </div>
+               <div class="field btns" id="pnb1">
+                  <button  type="button" class="prev-4 prev">Previous</button>
+                  <input type="submit" name="submit" id="submit" value="Submit">
+                   <!-- <button  type="button" class="submit" id="submit" value="Submit" name="submit">Submit</button> -->
+                 </div>
+           </div>
+         </div>
+            </form>
+         </div>
+
+
+     </div>
+<script src="script.js"></script>
+
+</body>
+</html>
